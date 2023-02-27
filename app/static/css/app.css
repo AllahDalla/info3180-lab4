@@ -18,3 +18,13 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.images img {
+    width: 250px;
+    height: 250px;
+}
+
+.images {
+    display:grid;
+    grid-template-columns: 265px 265px 265px;
+}
