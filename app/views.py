@@ -79,14 +79,23 @@ def login():
             check = check_password_hash(pwd, password)
             if check:
                 login_user(user)
+                login = True
                 flash("Successful login!")
-                return redirect(url_for("upload"))
+                return redirect(url_for("upload", login=login))
 
         # Gets user id, load into session
 
         # Remember to flash a message to the user
         return redirect(url_for("home"))  # The user should be redirected to the upload form instead
     return render_template("login.html", form=form)
+
+
+@app.route('/logout')
+def logout():
+    login = False
+    flash('You were logged out', 'success')
+    return redirect(url_for('home', login=login))
+
 
 # user_loader callback. This callback is used to reload the user object from
 # the user ID stored in the session
